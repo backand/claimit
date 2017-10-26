@@ -1,0 +1,14 @@
+service: claimit1
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  region: eu-central-1
+
+functions:
+  crop-image:
+    handler: index.crop_image
+    timeout: 60
+    environment:
+      appName: claimitapp
+      anonymousToken: a2129324-5b53-4ac7-8d09-c7e605e8bd24

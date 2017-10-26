@@ -1,0 +1,14 @@
+service: claimit
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  region: eu-central-1
+
+functions:
+  get-plate:
+    handler: index.get_plate
+    timeout: 60
+    environment:
+      country: us
+      secretKey: sk_f16e4db7ce9354b73cb74a29

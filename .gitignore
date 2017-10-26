@@ -1,0 +1,7 @@
+get_plate/node_modules
+get_plate/.serverless
+get_plate/.env
+
+crop_image/node_modules
+crop_image/.serverless
+crop_image/.env

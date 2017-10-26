@@ -1,0 +1,8 @@
+{
+  "name": "application-name",
+  "version": "0.0.4",
+  "dependencies": {
+    "dotenv": "^2.0.0",
+    "openalpr_api": "^2.0.1"
+  }
+}

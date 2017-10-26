@@ -1,0 +1,4 @@
+name: rankit-dev-get-rank
+version: 0.0.6
+runtime: lambda-nodejs4.3
+cmd: index.get_rank

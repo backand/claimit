@@ -1,0 +1,10 @@
+{
+  "name": "application-name",
+  "version": "0.0.4",
+  "dependencies": {
+    "@backand/nodejs-sdk": "^1.2.12",
+    "dotenv": "^2.0.0",
+    "gm": "^1.23.0",
+    "request": "^2.83.0"
+  }
+}
