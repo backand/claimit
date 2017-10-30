@@ -14,12 +14,19 @@ module.exports.get_plate = (event, context, cb) => {
     'topn': 2
   };
 
-  console.log("url:" + imageUrl);
+  console.log ("input values:");
+  console.log(event);
 
   api.recognizeUrl(imageUrl, secretKey, country, options, function (error, reponse) {
     if (!error) {
       var result = reponse.results[0];
+      if(!result){
+        cb("Can\'t find plate number in the image");
+      }
+
       var data = {
+        cloud: process.env.cloud,
+        imageUrl: imageUrl,
         plate: result.plate,
         region: result.region,
         vehicle: {
@@ -28,7 +35,7 @@ module.exports.get_plate = (event, context, cb) => {
           make_model: result.vehicle.make_model[0].name,
           body_type: result.vehicle.body_type[0].name
         },
-        vehicle_region: result.vehicle_region
+        vehicleRegion: result.vehicle_region
       };
       cb(null, data);
     }

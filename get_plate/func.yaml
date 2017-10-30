@@ -1,4 +1,6 @@
-name: rankit-dev-get-rank
+name: claimit-dev-get-plate
 version: 0.0.6
 runtime: lambda-nodejs4.3
-cmd: index.get_rank
+cmd: index.get_plate
+config:
+  cloud: fnProject

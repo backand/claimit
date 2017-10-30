@@ -1,0 +1,4 @@
+name: claimit-dev-crop-image
+version: 0.0.3
+runtime: lambda-nodejs4.3
+cmd: index.crop_image

@@ -1,4 +1,5 @@
 {
-  "url" : "https://files.backand.io/claimitapp/accident2.jpg",
-  "region": { "x": 402, "y": 161, "width": 271, "height": 271 }
+  "imageUrl" : "https://files.backand.io/claimitapp/accident2.jpg",
+  "vehicleRegion": "{\"x\":402,\"y\":161,\"width\":271,\"height\":271}",
+  "id":58
 }

@@ -12,26 +12,46 @@ backand.init({
 
 module.exports.crop_image = (event, context, cb) => {
 
-  var url = event.url;
-	var region = event.region;
-	//var returnImage = '/tmp/resized1.jpg';
-	console.log("url:" + url);
-	
-	gm(request(url))
-	.crop(region.width, region.height, region.x, region.y)
-	.toBuffer('JPG',function (err, buffer) {
-		if (err) return cb(err);
-		var filedata = new Buffer(buffer).toString('base64');
-		var fileType = url.substring(url.lastIndexOf('.')+1);
-		var fileName = url.substring(url.lastIndexOf('/')+1).replace('.' + fileType, '') + '_vehicle.'+fileType;
+	try{
+		var imageUrl = event.imageUrl;
+		var region = (event.vehicleRegion.constructor === Object) ? event.vehicleRegion : JSON.parse(event.vehicleRegion);
+		var dbId = event.id;
 
-		backand.file.upload("_root", "files", fileName, filedata)
-        .then(function (response) {
-          console.log(response.data.url);
-          cb(null, {fileUrl: response.data.url});
-        })
-        .catch(function(error) { 
-          cb(error);
-        })
-	})
+		console.log("url:" + imageUrl);
+		
+		gm(request(imageUrl))
+		.crop(region.width, region.height, region.x, region.y)
+		.toBuffer('JPG',function (err, buffer) {
+			if (err) return cb(err);
+
+			//Convert to buffer
+			var filedata = new Buffer(buffer).toString('base64');
+
+			//add sufix to the name
+			var fileType = imageUrl.substring(imageUrl.lastIndexOf('.')+1);
+			var fileName = imageUrl.substring(imageUrl.lastIndexOf('/')+1).replace('.' + fileType, '') + '_vehicle.'+fileType;
+
+			//upload the file to Backand Storage and Update the Database
+			backand.file.upload("_root", "files", fileName, filedata)
+					.then(function (response) {
+						console.log(response.data.url);
+						backand.object.update("claims", dbId, {
+							"vehicleUrl": response.data.url
+						})
+						.then(function(data) {
+							cb(null, {fileUrl: response.data.url});
+						})
+						.catch(function(error) {
+							cb(error);
+						})
+						
+					})
+					.catch(function(error) { 
+						cb(error);
+					})
+			})
+	}
+	catch(error){
+		cb(error);
+	}
 };
