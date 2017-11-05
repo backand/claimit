@@ -1,4 +1,4 @@
-service: claimit
+service: autoclaim
 
 provider:
   name: aws

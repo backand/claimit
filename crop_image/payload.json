@@ -1,5 +1,9 @@
 {
   "imageUrl" : "https://files.backand.io/claimitapp/accident2.jpg",
   "vehicleRegion": "{\"x\":402,\"y\":161,\"width\":271,\"height\":271}",
-  "id":58
+  "id": 128,
+  "userProfile": { 
+    "app": "claimitapp",
+    "token": "Bearer ebM0fFQRfJ6pgZXily7nHG1xRR3J4qdlRX2jX4ZVB-GlgGDCSiE6UML_tXs4u4jcvNv_nFY2GhsIpaSa4RLoCNhj0Qxi_jIJE5zB0xSDAl2Ta_IA1RCaD2ukzyn-n9mMKhWHRDQkQHkvcieeR9BA_KDJL3lADs7WHlCpXGwzIPAhyPeXeO7nB3J9-D78K-6Npiizyqq_NWM8NtHBFfhSymqeFTVLWsCJMP8pePDBnAPkp-1vXwd4ocWJr2kRbPByy8kqbtXqo967x8kD7wLc-Sqi4KXb3EtIqydQOgy0l1OmvmoJJseQp_01rwtLkQpnAJgVOvQVcUauYyBSWzwlYMTDqLSQY3vvJlDCWE8gS5ozTDpvu1OODR_fNa6ucAiJZY8c8VqEHDUrP00qk0wYTO83K0eIpz5VBxzOaby9OMrGZ8cjzBmgQEeujS5saHAyyr5PM6evAmrbEJmWre5XF-h4ZfJeBkupAiu9rpBB3pRlXMUs2xs9arjXcJ7gKsVgT8mqOf7f4CogqGZyHNuhWdDd-uB_JvBOIq_ue45YSpx1GXryY8ITCGr7iv7edUVQgA3eQsXYEKtcGF1rxkz6jUADi7x53Yy-Uikdu3LU6vjAkqibRmd4k1C0qC7Vw6bXfg_Y0EjL1OieTe1LPp-HVxYri0y3EslAtcid_eD-_3IaFE3HUbPVvnWopxtVJK081tm3FGKnF-DddhafiFQyEhENt3NkI85VhDHx5c34YT7-4qkpLzW0PwpFotVVPnXv"
+  }
 }

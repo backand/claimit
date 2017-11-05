@@ -1,18 +1,17 @@
 require('dotenv').config();
-var gm = require('gm').subClass({imageMagick: true});
-var request = require('request');
-var fs = require('fs');
-var backand = require('@backand/nodejs-sdk');
-
-backand.init({
-    appName: process.env.appName,
-    anonymousToken: process.env.anonymousToken
-});
-
+const gm = require('gm').subClass({imageMagick: true});
+const request = require('request');
+const fs = require('fs');
+const backand = require('@backand/nodejs-sdk');
 
 module.exports.crop_image = (event, context, cb) => {
 
 	try{
+
+		console.log(event);
+
+		initBackand(event);
+
 		var imageUrl = event.imageUrl;
 		var region = (event.vehicleRegion.constructor === Object) ? event.vehicleRegion : JSON.parse(event.vehicleRegion);
 		var dbId = event.id;
@@ -55,3 +54,21 @@ module.exports.crop_image = (event, context, cb) => {
 		cb(error);
 	}
 };
+
+function initBackand(event){
+
+		if(backand.defaults){
+				backand.defaults.accessToken = event.userProfile.token;
+        backand.useAccessAuth();
+		} else{
+			var backandConfig = {
+				appName: event.userProfile.app
+			};
+			if(event.userProfile.token){
+				backandConfig.accessToken = event.userProfile.token;
+			} else {
+				backandConfig.anonymousToken = process.env.anonymousToken
+			}
+			backand.init(backandConfig);
+		}
+}

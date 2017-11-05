@@ -1,4 +1,4 @@
-name: claimit-dev-get-plate
+name: autoclaim-dev-get-plate
 version: 0.0.6
 runtime: lambda-nodejs4.3
 cmd: index.get_plate
